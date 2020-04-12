@@ -7,6 +7,8 @@
 <p align="center"><b>This is the snap for Greenfoot</b>, <i>“Educational software designed to make learning programming easy and fun ”</i>. It works on Ubuntu, Fedora, Debian, and other major Linux
 distributions.</p>
 
+[![greenfoot](https://snapcraft.io//greenfoot/badge.svg)](https://snapcraft.io/greenfoot)
+
 <!-- Uncomment and modify this when you are provided a build status badge
 <p align="center">
 <a href="https://build.snapcraft.io/user/snapcrafters/fork-and-rename-me"><img src="https://build.snapcraft.io/badge/snapcrafters/fork-and-rename-me.svg" alt="Snap Status"></a>
@@ -19,7 +21,7 @@ distributions.</p>
 
 ## Install
 
-    sudo snap install greenfoot
+    sudo snap install --beta greenfoot
 
 [![Get it from the Snap Store](https://snapcraft.io/static/images/badges/en/snap-store-white.svg)](https://snapcraft.io/greenfoot)
 
@@ -36,18 +38,18 @@ the [snapcraft.yaml](https://github.com/snapcrafters/fork-and-rename-me/blob/mas
 upstream so [Project] can authoritatively publish future releases.
 
   - [x] Click the green "Use this template" button above to create a new repository based on this template
-  - [ ] Give the newly created repository a sensible name, like `godzilla-snap` if you're snapping the Godzilla software
-  - [ ] Update the description of the repository
-  - [ ] Update logos and references to `[Project]` and `[my-snap-name]`
-  - [ ] Create a snap that runs in `devmode`
-  - [ ] Register the snap in the store, **using the preferred upstream name**
-  - [ ] Add a screenshot to this `README.md`
-  - [ ] Publish the `devmode` snap in the Snap store edge channel
-  - [ ] Add install instructions to this `README.md`
-  - [ ] Update snap store metadata, icons and screenshots
-  - [ ] Convert the snap to `strict` confinement, or `classic` confinement if it qualifies
-  - [ ] Publish the confined snap in the Snap store beta channel
-  - [ ] Update the install instructions in this `README.md`
+  - [X] Give the newly created repository a sensible name, like `godzilla-snap` if you're snapping the Godzilla software
+  - [X] Update the description of the repository
+  - [X] Update logos and references to `[Project]` and `[my-snap-name]`
+  - [X] Create a snap that runs in `devmode`
+  - [X] Register the snap in the store, **using the preferred upstream name**
+  - [X] Add a screenshot to this `README.md`
+  - [X] Publish the `devmode` snap in the Snap store edge channel
+  - [X] Add install instructions to this `README.md`
+  - [X] Update snap store metadata, icons and screenshots
+  - [X] Convert the snap to `strict` confinement, or `classic` confinement if it qualifies
+  - [X] Publish the confined snap in the Snap store beta channel
+  - [X] Update the install instructions in this `README.md`
   - [ ] Post a call for testing on the [Snapcraft Forum](https://forum.snapcraft.io) - [link]()
   - [ ] Make a post in the [Snapcraft Forum](https://forum.snapcraft.io) asking for a transfer of the snap name from you to snapcrafters - [link]()
   - [ ] Ask a [Snapcrafters admin](https://github.com/orgs/snapcrafters/people?query=%20role%3Aowner) to fork your repo into github.com/snapcrafters, and configure the repo for automatic publishing into edge on commit

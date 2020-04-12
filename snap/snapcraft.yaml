@@ -77,7 +77,7 @@ parts:
       CP="\$CP:\$JAVAFXJARS"
       JFXRTOPT="-javafxpath=\$JAVAFXPATH"
       JFXRTOPT2="-javafxjars=\$JAVAFXJARS"
-      java -Duser.home=\$HOME -Djavafx.embed.singleThread=true -Dawt.useSystemAAFontSettings=on -Xmx512M -cp "\$CP" bluej.Boot -greenfoot=true -bluej.compiler.showunchecked=false -greenfoot.scenarios=$SNAP/usr/share/doc/Greenfoot/scenarios -greenfoot.url.javadoc=file://$SNAP/usr/share/doc/Greenfoot/API/ "\$@"
+      java -Duser.home=\$HOME -Djavafx.embed.singleThread=true -Dawt.useSystemAAFontSettings=on -Xmx512M -cp "\$CP" bluej.Boot \$JFXRTOPT \$JFXRTOPT2 -greenfoot=true -bluej.compiler.showunchecked=false -greenfoot.scenarios=$SNAP/usr/share/doc/Greenfoot/scenarios -greenfoot.url.javadoc=file://$SNAP/usr/share/doc/Greenfoot/API/ "\$@"
       EOF
       chmod +x $SNAPCRAFT_PART_INSTALL/greenfoot-launch
       cat <<EOF > $SNAPCRAFT_PART_INSTALL/greenfoot-bluej-launch # Based on the BlueJ startscript (/usr/bin/bluej)

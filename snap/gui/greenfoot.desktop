@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=3.6.1
+Name=Greenfoot
+GenericName=Greenfoot Educational Java Development Environment
+Comment=Educational software designed to make learning programming easy and fun
+Exec=greenfoot
+Icon=${SNAP}/meta/gui/greenfoot.png
+Terminal=false
+Categories=Development;Education
+Type=Application

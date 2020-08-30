@@ -4,7 +4,7 @@
   Greenfoot
 </h1>
 
-<p align="center"><b>This is the inofficial snap for Greenfoot</b>, <i>“Educational software designed to make learning programming easy and fun ”</i>. It works on Ubuntu, Fedora, Debian, and other major Linux
+<p align="center"><b>This is the unofficial snap for Greenfoot</b>, <i>“Educational software designed to make learning programming easy and fun ”</i>. It works on Ubuntu, Fedora, Debian, and other major Linux
 distributions.</p>
 
 [![greenfoot](https://snapcraft.io//greenfoot/badge.svg)](https://snapcraft.io/greenfoot)

@@ -14,7 +14,7 @@ apps:
     command: greenfoot-launch
     #desktop: usr/share/applications/greenfoot.desktop
     environment:
-      JAVA_HOME: $SNAP/usr/lib/jvm/java-11-openjdk-amd64
+      JAVA_HOME: $(dirname $(dirname $(readlink -f $(which java))))
       PATH: $JAVA_HOME/bin:$PATH
     plugs:
       - home
@@ -25,7 +25,7 @@ apps:
       - gnome-3-28
     command: greenfoot-bluej-launch
     environment:
-      JAVA_HOME: $SNAP/usr/lib/jvm/java-11-openjdk-amd64
+      JAVA_HOME: $(dirname $(dirname $(readlink -f $(which java))))
       PATH: $JAVA_HOME/bin:$PATH
     plugs:
       - home

@@ -15,7 +15,7 @@ apps:
     #desktop: usr/share/applications/greenfoot.desktop
     environment:
       JAVA_HOME: $(dirname $(dirname $(readlink -f $(which java))))
-      PATH: $JAVA_HOME/bin:$PATH
+      PATH: $JAVA_HOME/jre/bin:$PATH
     plugs:
       - home
       - network

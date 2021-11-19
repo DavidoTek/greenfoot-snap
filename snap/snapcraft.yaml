@@ -12,6 +12,7 @@ apps:
     extensions:
       - gnome-3-28
     command: greenfoot-launch
+    common-id: org.greenfoot.Greenfoot
     #desktop: usr/share/applications/greenfoot.desktop
     environment:
       JAVA_HOME: $SNAP/usr/lib/jvm/java-11-openjdk-amd64

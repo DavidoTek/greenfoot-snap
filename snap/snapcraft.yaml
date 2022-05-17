@@ -1,5 +1,5 @@
 name: greenfoot
-version: "3.7.0"
+version: "3.7.1"
 summary: Educational software designed to make learning programming easy and fun
 description: |
   ToDo
@@ -36,7 +36,7 @@ apps:
 parts:
   greenfoot:
     plugin: dump
-    source: http://www.greenfoot.org/download/files/source/Greenfoot-source-370.zip
+    source: http://www.greenfoot.org/download/files/source/Greenfoot-source-371.zip
     source-type: zip
     build-packages:
       - openjdk-11-jdk

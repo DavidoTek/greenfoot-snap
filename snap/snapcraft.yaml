@@ -4,30 +4,24 @@ summary: Educational software designed to make learning programming easy and fun
 description: |
   ToDo
 
-base: core18
+base: core22
 confinement: strict
+architectures: [amd64]
 
 apps:
   greenfoot:
     extensions:
-      - gnome-3-28
-    command: greenfoot-launch
+      - gnome
+    command: usr/bin/greenfoot
     common-id: org.greenfoot.Greenfoot
-    #desktop: usr/share/applications/greenfoot.desktop
-    environment:
-      JAVA_HOME: $SNAP/usr/lib/jvm/java-11-openjdk-amd64
-      PATH: $JAVA_HOME/bin:$PATH
     plugs:
       - home
       - network
       - network-bind
   bluej:
     extensions:
-      - gnome-3-28
-    command: greenfoot-bluej-launch
-    environment:
-      JAVA_HOME: $SNAP/usr/lib/jvm/java-11-openjdk-amd64
-      PATH: $JAVA_HOME/bin:$PATH
+      - gnome
+    command: usr/bin/greenfoot-bluej
     plugs:
       - home
       - network
@@ -36,73 +30,13 @@ apps:
 parts:
   greenfoot:
     plugin: dump
-    source: http://www.greenfoot.org/download/files/source/Greenfoot-source-371.zip
-    source-type: zip
-    build-packages:
-      - openjdk-11-jdk
-      - openjfx
-      - ant
-      - unzip
-      - ca-certificates-java
-      - ca-certificates
-    stage-packages: [openjdk-11-jdk, openjfx]
+    source: https://www.greenfoot.org/download/files/Greenfoot-linux-371.deb
+    source-type: deb
     override-build: |
-      cat <<EOF > bluej/build.properties
-      build_java_home=/usr
-      java_command_dir_name=bin
-      openjfx_path=/usr/share/openjfx
-      run_java_home=${build_java_home}
-      EOF
-      cd bluej
-      ant clean
-      ant ready-to-run-greenfoot
-      cd ../greenfoot
-      ant clean
-      ant ready-to-run
-      cd ..
-      mkdir -p $SNAPCRAFT_PART_INSTALL/usr/share/greenfoot
-      cp -r bluej/lib/* $SNAPCRAFT_PART_INSTALL/usr/share/greenfoot # check if working
-      # copy doc!!!
-      cat <<EOF > $SNAPCRAFT_PART_INSTALL/greenfoot-launch # Based on the Greenfoot startscript (/usr/bin/bluej)
-      #!/bin/sh
-      CP="\$SNAP/usr/share/greenfoot/bluej.jar"
-      JFXRTOPT=""
-      JFXRTOPT2=""
-      JAVAFXPATH="\$SNAP/usr/share/java"
-      JAVAFXJARS="\$JAVAFXPATH/javafx-base-11.jar"
-      JAVAFXJARS="\$JAVAFXJARS:\$JAVAFXPATH/javafx-controls-11.jar"
-      JAVAFXJARS="\$JAVAFXJARS:\$JAVAFXPATH/javafx-fxml-11.jar"
-      JAVAFXJARS="\$JAVAFXJARS:\$JAVAFXPATH/javafx-graphics-11.jar"
-      JAVAFXJARS="\$JAVAFXJARS:\$JAVAFXPATH/javafx-media-11.jar"
-      JAVAFXJARS="\$JAVAFXJARS:\$JAVAFXPATH/javafx-properties-11.jar"
-      JAVAFXJARS="\$JAVAFXJARS:\$JAVAFXPATH/javafx-swing-11.jar"
-      JAVAFXJARS="\$JAVAFXJARS:\$JAVAFXPATH/javafx-web-11.jar"
-      CP="\$CP:\$JAVAFXJARS"
-      JFXRTOPT="-javafxpath=\$JAVAFXPATH"
-      JFXRTOPT2="-javafxjars=\$JAVAFXJARS"
-      java -Duser.home=\$HOME -Djavafx.embed.singleThread=true -Dawt.useSystemAAFontSettings=on -Xmx512M -cp "\$CP" bluej.Boot \$JFXRTOPT \$JFXRTOPT2 -greenfoot=true -bluej.compiler.showunchecked=false -greenfoot.scenarios=$SNAP/usr/share/doc/Greenfoot/scenarios -greenfoot.url.javadoc=file://$SNAP/usr/share/doc/Greenfoot/API/ "\$@"
-      EOF
-      chmod +x $SNAPCRAFT_PART_INSTALL/greenfoot-launch
-      cat <<EOF > $SNAPCRAFT_PART_INSTALL/greenfoot-bluej-launch # Based on the BlueJ startscript (/usr/bin/bluej)
-      #!/bin/sh
-      CP="\$SNAP/usr/share/greenfoot/bluej.jar"
-      JFXRTOPT=""
-      JFXRTOPT2=""
-      JAVAFXPATH="\$SNAP/usr/share/java"
-      JAVAFXJARS="\$JAVAFXPATH/javafx-base-11.jar"
-      JAVAFXJARS="\$JAVAFXJARS:\$JAVAFXPATH/javafx-controls-11.jar"
-      JAVAFXJARS="\$JAVAFXJARS:\$JAVAFXPATH/javafx-fxml-11.jar"
-      JAVAFXJARS="\$JAVAFXJARS:\$JAVAFXPATH/javafx-graphics-11.jar"
-      JAVAFXJARS="\$JAVAFXJARS:\$JAVAFXPATH/javafx-media-11.jar"
-      JAVAFXJARS="\$JAVAFXJARS:\$JAVAFXPATH/javafx-properties-11.jar"
-      JAVAFXJARS="\$JAVAFXJARS:\$JAVAFXPATH/javafx-swing-11.jar"
-      JAVAFXJARS="\$JAVAFXJARS:\$JAVAFXPATH/javafx-web-11.jar"
-      CP="\$CP:\$JAVAFXJARS"
-      JFXRTOPT="-javafxpath=\$JAVAFXPATH"
-      JFXRTOPT2="-javafxjars=\$JAVAFXJARS"
-      java -Duser.home=\$HOME -Djavafx.embed.singleThread=true -Dawt.useSystemAAFontSettings=on -Xmx512M -cp "\$CP" bluej.Boot \$JFXRTOPT \$JFXRTOPT2 "\$@"
-      EOF
-      chmod +x $SNAPCRAFT_PART_INSTALL/greenfoot-bluej-launch
+      cp -r usr $SNAPCRAFT_PART_INSTALL 
+      sed -i 's/\/usr/$SNAP\/usr/g' $SNAPCRAFT_PART_INSTALL/usr/bin/greenfoot
+      sed -i "s/java\"/java\" -Duser.home=\$HOME/g" $SNAPCRAFT_PART_INSTALL/usr/bin/greenfoot
+      cp $SNAPCRAFT_PART_INSTALL/usr/bin/greenfoot $SNAPCRAFT_PART_INSTALL/usr/bin/greenfoot-bluej
+      sed -i "s/greenfoot=true/greenfoot=false/g" $SNAPCRAFT_PART_INSTALL/usr/bin/greenfoot-bluej
     override-prime: |
       snapcraftctl prime
-      rm -vf usr/lib/jvm/java-11-openjdk-*/lib/security/blacklisted.certs

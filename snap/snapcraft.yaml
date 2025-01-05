@@ -1,9 +1,8 @@
 name: greenfoot
-version: "3.8.2"
+version: "3.9.0"
 summary: Educational software designed to make learning programming easy and fun
 description: |
-  ToDo
-
+  Greenfoot teaches object orientation with Java. Create 'actors' which live in 'worlds' to build games, simulations, and other graphical programs.
 base: core22
 confinement: strict
 architectures: [amd64]
@@ -30,7 +29,7 @@ apps:
 parts:
   greenfoot:
     plugin: dump
-    source: https://www.greenfoot.org/download/files/Greenfoot-linux-382.deb
+    source: https://www.greenfoot.org/download/files/Greenfoot-linux-x64-390.deb
     source-type: deb
     override-build: |
       cp -r usr $SNAPCRAFT_PART_INSTALL 
